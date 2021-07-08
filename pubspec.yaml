@@ -22,6 +22,7 @@ environment:
 
 dependencies:
   page_transition: ^2.0.2
+  html: ^0.15.0
   flutter:
     sdk: flutter
 
@@ -76,8 +77,5 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
-    - images/apartment.png
-    - images/background.png
-    - images/bussiness.png
-    - images/mv_logo.png
-    - images/mv_logo2.png
+    - images/
+    - client/

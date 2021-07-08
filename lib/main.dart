@@ -1,6 +1,8 @@
+import 'package:first_flutter/aprtment.dart';
 import 'package:first_flutter/mypage.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'dart:html' as html;
 
 void main() {
   runApp(MyApp());
@@ -21,6 +23,15 @@ class MyApp extends StatelessWidget {
           case '/second':
             return PageTransition(
               child: MyPage(title: 'My Page'),
+              type: PageTransitionType.fade,
+              settings: settings,
+              duration: Duration(milliseconds: 200),
+              reverseDuration: Duration(milliseconds: 200),
+            );
+            break;
+          case '/apartment':
+            return PageTransition(
+              child: ApartmentPage(title: 'Create Apartment System'),
               type: PageTransitionType.fade,
               settings: settings,
               duration: Duration(milliseconds: 200),
@@ -66,7 +77,7 @@ class _TopPageState extends State<TopPage> {
                     top: 100, left: 40, right: 40, bottom: 40),
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    alignment:  Alignment.topCenter,
+                      alignment: Alignment.topCenter,
                       image: new AssetImage("images/mv_logo.png"),
                       fit: BoxFit.fitWidth),
                   borderRadius: BorderRadius.circular(10),
@@ -171,6 +182,29 @@ class _TopPageState extends State<TopPage> {
                         ),
                       ),
                     ),
+                    Container(
+                        alignment: Alignment.topCenter,
+                        margin: const EdgeInsets.only(top: 30.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                html.window.open('/client/setup.exe', '_self');
+                              },
+                              child: Text(
+                                  "Please install the client tool beforehand.",
+                                style: TextStyle(color: Colors.indigo)
+                                ),
+                            ),
+                            new Tooltip(
+                                textStyle: TextStyle(
+                                    fontSize: 16, color: Colors.white),
+                                padding: EdgeInsets.all(10),
+                                message: "It is necessary to install the client tool to reflect the settings on the terminal.\nThe client tool runs on Windows 7, 10, 11.",
+                                child: new Icon(Icons.help)),
+                          ],
+                        )),
                   ],
                 ),
                 width: 500,
