@@ -190,7 +190,7 @@ class _TopPageState extends State<TopPage> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                html.window.open('/client/setup.exe', '_self');
+                                html.window.open('/client/Setup1.msi', '_self');
                               },
                               child: Text(
                                   "Please install the client tool beforehand.",

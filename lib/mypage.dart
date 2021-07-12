@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:html' as html;
 
 class MyPage extends StatefulWidget {
   MyPage({Key? key, required this.title}) : super(key: key);
@@ -315,33 +316,31 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
                                               ElevatedButton(
                                                   style: ButtonStyle(
                                                     backgroundColor:
-                                                    MaterialStateProperty
-                                                        .all(Colors.blue),
+                                                        MaterialStateProperty
+                                                            .all(Colors.blue),
                                                     padding:
-                                                    MaterialStateProperty
-                                                        .all(EdgeInsets
-                                                        .all(20.0)),
+                                                        MaterialStateProperty
+                                                            .all(EdgeInsets.all(
+                                                                20.0)),
                                                   ),
                                                   onPressed: () {
                                                     Navigator.pushNamed(
                                                         context, "/second");
                                                   },
-                                                  child:
-                                                  Row(children:[
+                                                  child: Row(children: [
                                                     Text("bussiness"),
                                                     new Tooltip(
                                                       textStyle: TextStyle(
                                                           fontSize: 16,
                                                           color: Colors.white),
                                                       padding:
-                                                      EdgeInsets.all(10),
+                                                          EdgeInsets.all(10),
                                                       message:
-                                                      "Complex call settings are possible.Since there is no concept of room or group entrance, terminals for group systems (IXG-2C7, IXG-DM7, IXG-LC, IXG-MK) cannot be connected.",
+                                                          "Complex call settings are possible.Since there is no concept of room or group entrance, terminals for group systems (IXG-2C7, IXG-DM7, IXG-LC, IXG-MK) cannot be connected.",
                                                       child:
-                                                      new Icon(Icons.help),),
-                                                  ])
-                                              ),
-
+                                                          new Icon(Icons.help),
+                                                    ),
+                                                  ])),
                                             ],
                                           ),
                                           Column(
@@ -349,35 +348,34 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
                                               Image.asset(
                                                   "images/apartment.png",
                                                   width: 200),
-                                                  ElevatedButton(
-                                                    style: ButtonStyle(
-                                                      backgroundColor:
-                                                          MaterialStateProperty
-                                                              .all(Colors.blue),
-                                                      padding:
-                                                          MaterialStateProperty
-                                                              .all(EdgeInsets
-                                                                  .all(20.0)),
-                                                    ),
-                                                    onPressed: () {
-                                                      Navigator.pushNamed(context, "/apartment");
-                                                    },
-                                                    child:
-                                                      Row(children:[
-                                                        Text("Apartment"),
-                                                        new Tooltip(
-                                                          textStyle: TextStyle(
-                                                              fontSize: 16,
-                                                              color: Colors.white),
-                                                          padding:
-                                                          EdgeInsets.all(10),
-                                                          message:
-                                                          "This system is designed for apartment complexes.\nIt is suitable for properties where rooms are called from the assembly entrance.",
-                                                          child:
-                                                          new Icon(Icons.help),),
-                                                      ])
+                                              ElevatedButton(
+                                                  style: ButtonStyle(
+                                                    backgroundColor:
+                                                        MaterialStateProperty
+                                                            .all(Colors.blue),
+                                                    padding:
+                                                        MaterialStateProperty
+                                                            .all(EdgeInsets.all(
+                                                                20.0)),
                                                   ),
-
+                                                  onPressed: () {
+                                                    Navigator.pushNamed(
+                                                        context, "/apartment");
+                                                  },
+                                                  child: Row(children: [
+                                                    Text("Apartment"),
+                                                    new Tooltip(
+                                                      textStyle: TextStyle(
+                                                          fontSize: 16,
+                                                          color: Colors.white),
+                                                      padding:
+                                                          EdgeInsets.all(10),
+                                                      message:
+                                                          "This system is designed for apartment complexes.\nIt is suitable for properties where rooms are called from the assembly entrance.",
+                                                      child:
+                                                          new Icon(Icons.help),
+                                                    ),
+                                                  ])),
                                             ],
                                           ),
                                         ],
@@ -404,7 +402,72 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
                 width: 1000),
           ),
           Center(
-            child: Text("It's rainy here"),
+            child: Container(
+              margin: EdgeInsets.only(top: 80),
+              width: 800,
+              child: Column(
+                children: [
+                  Card(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        const ListTile(
+                          leading: Icon(Icons.search_rounded),
+                          title: Text('Terminal search!'),
+                          subtitle: Text(
+                              'Search for AIPHONE products that can be accessed from your PC.'),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            ElevatedButton(
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(Colors.blue),
+                                padding: MaterialStateProperty.all(EdgeInsets.all(12.0)),
+                              ),
+                              onPressed: () {
+                                html.window.open('exixgmgr:search', '');
+                              },
+                              child: Text("RUN", style: TextStyle(fontSize: 16)),
+                            ),
+                            const SizedBox(width: 8, height: 40),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Card(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        const ListTile(
+                          leading: Icon(Icons.healing),
+                          title: Text('Doctor'),
+                          subtitle: Text(
+                              'Detects problems with AIPHONE products that can be accessed from your PC.'),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            ElevatedButton(
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(Colors.blue),
+                                padding: MaterialStateProperty.all(EdgeInsets.all(12.0)),
+                              ),
+                              onPressed: () {
+                                html.window.open('exixgmgr:doctor', '_self');
+                              },
+                              child: Text("RUN", style: TextStyle(fontSize: 16)),
+                            ),
+                            const SizedBox(width: 8, height: 40),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
           Center(
             child: Container(
